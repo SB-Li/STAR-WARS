@@ -1,0 +1,17 @@
+<div class="container">
+  <form class="form-signin">
+      <h2 class="form-signin-heading">Please search by name: </h2>
+      <label for="planetname" class="sr-only">Username</label>
+      <input type="text" id="planetname" class="form-control" (keyup)="searchTerm$.next($event.target.value)" (keyup)="addSearchTime()">
+      <ul class="list-group" *ngFor="let result of results">
+        <li class="list-group-item list-group-item-success" [ngClass]="{
+            'xl': result.population > 15000000000,
+            'lg': result.population > 1500000000,
+            'md': result.population > 150000000 ,
+            'sm': result.population > 15000000,
+            'xs': result.population > 0}">
+          {{ result.name }} {{result.population}}
+        </li>
+      </ul>
+  </form>
+</div>
